@@ -58,7 +58,7 @@ __device__ uchar vm_read(VirtualMemory *vm, u32 addr) {
     *vm->pagefault_num_ptr += 1; // a page fault
     // if there is still an empty entry
     for (int physical_frame_number = 0; physical_frame_number < vm->PAGE_ENTRIES; physical_frame_number++) {
-      if (vm->invert_page_table[physical_frame_number] == 0x8000000) { // an empty entry
+      if (vm->invert_page_table[physical_frame_number] == 0x80000000) { // an empty entry
         vm->invert_page_table[physical_frame_number] = 0x00000000;
         vm->invert_page_table[physical_frame_number + vm->PAGE_ENTRIES] = virtual_page_number;
         vm->invert_page_table[physical_frame_number + vm->PAGE_ENTRIES * 2] = 0; // set LRU bit
