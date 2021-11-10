@@ -132,7 +132,6 @@ __device__ void vm_write(VirtualMemory *vm, u32 addr, uchar value) {
     for (int physical_frame_number = 0; physical_frame_number < vm->PAGE_ENTRIES; physical_frame_number++) {
        if (vm->invert_page_table[physical_frame_number + vm->PAGE_ENTRIES * 2] > max_clock_time) {
            max_clock_time = vm->invert_page_table[physical_frame_number + vm->PAGE_ENTRIES * 2];
-          //  printf("%d\n", max_clock_time);
            least_recent_entry = physical_frame_number;
        }
     }
